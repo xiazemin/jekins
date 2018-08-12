@@ -52,3 +52,7 @@ $ java -jar jenkins.war --httpPort=8000
 
 然后在浏览器中（推荐用火狐、chrom）输入[http://localhost:8080，localhost可以是本机的ip，也可以是计算机名。就可以打开jenkins；修改端口后，访问地址的端口需同步变更。](http://localhost:8080，localhost可以是本机的ip，也可以是计算机名。就可以打开jenkins；修改端口后，访问地址的端口需同步变更。)
 
+
+
+java -jar /Applications/Jenkins/jenkins.war --httpPort=8087
+
