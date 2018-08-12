@@ -8,7 +8,7 @@
 
 每次 Blue Ocean 发布新版本时，jenkinsci/blueocean 镜像都会发布。可用在 tags 页面看到之前发布的镜像列表。
 
-当然也有其他的可用的 Jenkins 镜像（在 Docker Hub 的 jenkins/jenkins 中）。然而，那些不包含 Blue Ocean，需要通过 Jenkins 的 \[Manage Jenkins\]\([https://jenkins.io/doc/book/managing\](https://jenkins.io/doc/book/managing\)\) &gt; \[Manage Plugins\]\([https://jenkins.io/doc/book/managing/plugins\](https://jenkins.io/doc/book/managing/plugins\)\) 页面安装。更多资料参考 Getting started with Blue Ocean。
+当然也有其他的可用的 Jenkins 镜像（在 Docker Hub 的 jenkins/jenkins 中）。然而，那些不包含 Blue Ocean，需要通过 Jenkins 的 \[Manage Jenkins\]\([https://jenkins.io/doc/book/managing\](https://jenkins.io/doc/book/managing%29\) &gt; \[Manage Plugins\]\([https://jenkins.io/doc/book/managing/plugins\](https://jenkins.io/doc/book/managing/plugins%29\) 页面安装。更多资料参考 Getting started with Blue Ocean。
 
 2.1.2.1 在 macOS 和 Linux 上
 
@@ -77,4 +77,54 @@ docker run \
 -v /var/run/docker.sock:/var/run/docker.sock \
 
 jenkinsci/blueocean
+
+2.1.4 通过 Docker logs 访问 Jenkins console 日志
+
+有时候你会需要访问 Jenkins console 日志，例如 Post-installation setup wizard 中的 Unlocking Jenkins。
+
+
+
+如果执行上面的 docker run ... 命令时没有通过 -d 选项指定为后台模式，那么 Jenkins console 日志可以在运行 Docker 命令的终端轻松获取到。
+
+
+
+否则，可以通过 docker logs 访问 jenkinsci/blueocean 容器中的 Jenkins console 日志：
+
+
+
+docker logs &lt;docker-container-name&gt;
+
+
+
+其中 &lt;docker-container-name&gt; 可以通过 docker ps 命令获取。如果在执行上面的 docker run ... 命令时指定了 --name jenkins-blueocean 选项，可以这样使用 docker logs 命令：
+
+
+
+docker logs jenkins-blueocean
+
+
+
+2.1.5 访问 Jenkins 根目录
+
+有时候你会需要访问 Jenkins 根目录，例如检查 workspace 子目录中的 Jenkins 构建详情。
+
+
+
+如果将 Jenkins 根目录（/var/jenkins\_home）映射到机器的本地文件系统（通过上面的 docker run ... 命令），则可以直接通过本地机器的终端或命令行窗口访问这个目录的内容。
+
+
+
+其他情况下，如果在 docker run ... 命令中指定了 -v jenkins-data:/var/jenkins\_home，可以通过 docker exec 命令在 jenkinsci/blueocean 容器的终端或命令行窗口访问 Jenkins 根目录的内容：
+
+
+
+docker exec -it &lt;docker-container-name&gt; bash
+
+
+
+跟上面一部分的例子一样，&lt;docker-container-name&gt; 可以通过 docker ps 命令得到。如果在 docker run ... 命令中使用了 --name jenkins-blueocean 选项（参考 Accessing the Jenkins/Blue Ocean Docker container），则可以直接使用 docker exec 命令：
+
+
+
+docker exec -it jenkins-blueocean bash
 
