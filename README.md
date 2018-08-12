@@ -52,7 +52,23 @@ $ java -jar jenkins.war --httpPort=8000
 
 然后在浏览器中（推荐用火狐、chrom）输入[http://localhost:8080，localhost可以是本机的ip，也可以是计算机名。就可以打开jenkins；修改端口后，访问地址的端口需同步变更。](http://localhost:8080，localhost可以是本机的ip，也可以是计算机名。就可以打开jenkins；修改端口后，访问地址的端口需同步变更。)
 
-
-
 java -jar /Applications/Jenkins/jenkins.war --httpPort=8087
+
+\(3\) docker形式安装
+
+yum install docker -y  && systemctl start docker && \
+
+curl -sSL https://get.daocloud.io/daotools/set\_mirror.sh \| sh -s && systemctl restart docker
+
+docker search jenkins
+
+docker pull docker.io/jenkins
+
+docker run -d -p 8080:8080 docker.io/jenkins
+
+docker exec -it 52873fa3dce4 /bin/bash 
+
+cat /var/jenkins\_home/secrets \#查看密码 
+
+访问 http://ip:8080/ 进行安装
 
