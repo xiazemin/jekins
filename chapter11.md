@@ -92,15 +92,9 @@ Trigger even if the build fails ： 构建失败的时候触发
 
 Poll SCM：定时检查源码变更，如果有更新就checkout最新code下来，然后执行构建动作。
 
-
-
- 如果没有更新就不会执行构建
-
-
-
-
-
-
+如果没有更新就不会执行构建
 
 Build periodically：周期进行项目构建（源码是否发生变化没有关系）
+
+![](/assets/importbuildTrig.png)
 
