@@ -68,11 +68,7 @@ BlueOcean作为Jenkins插件本身构建。然而，有一个关键的区别。�
 
 BlueOcean可以安装在现有的Jenkins环境中，也可以使用Docker进行运行 。
 
-
-
 要开始在现有的Jenkins环境中使用Blue Ocean插件，它必须运行Jenkins 2.7.x或更高版本：
-
-
 
 登录到您的Jenkins服务器
 
@@ -86,25 +82,15 @@ BlueOcean可以安装在现有的Jenkins环境中，也可以使用Docker进行�
 
 BlueOcean入门
 
-
-
 有关如何安装和Pipeline插件的深入描述，请参阅“ Pipeline插件”部分。
 
-
-
 大多数Blue Ocean在安装后不需要额外的配置。现有管道和作业将继续照常运行。但是，Blue Ocean将首次创建或添加Pipeline，将要求访问您的存储库（Git或GitHub）的权限，以便根据这些存储库创建Pipeline。
-
-
 
 与Docker
 
 Jenkins项目每次发布Blue Ocean的新版本时，都会发布一个内置BlueOcean的Docker容器。该jenkinsci/blueocean 图像基于当前的Jenkins长期支持 （LTS）版本，并且已经准备就绪。
 
-
-
 预先安装一个新的Jenkins：BlueOcean
-
-
 
 确保Docker已安装。
 
@@ -114,35 +100,21 @@ Jenkins项目每次发布Blue Ocean的新版本时，都会发布一个内置Blu
 
 可以使用与Jenkins项目发布的其他图像相同的配置选项来配置Blue Ocean容器 。
 
-
-
 开始BlueOcean
 
-一旦Jenkins环境安装了Blue Ocean，用户可以通过点击Jenkins网络用户界面的导航栏中的Open Blue Ocean开始使用Blue Ocean 。或者，用户可以直接浏览BlueOcean/blue，例如Jenkins环境的 URL http://JENKINS\_URL/blue。
-
-
+一旦Jenkins环境安装了Blue Ocean，用户可以通过点击Jenkins网络用户界面的导航栏中的Open Blue Ocean开始使用Blue Ocean 。或者，用户可以直接浏览BlueOcean/blue，例如Jenkins环境的 URL [http://JENKINS\_URL/blue。](http://JENKINS_URL/blue。)
 
 BlueOcean入门
-
-
 
 如果Pipeline已经存在于当前的Jenkins实例上，则会显示 Blue Ocean Dashboard。
 
-
-
 如果这是一个新的Jenkins实例，BlueOcean将展示一个盒子，以“ Create a new pipeline”。
 
-
-
 BlueOcean入门
-
-
 
 导航栏
 
 BlueOcean在大多数BlueOcean的顶部使用一个通用的导航栏。它包括五个按钮：
-
-
 
 Jenkins - 导航到仪表板（重新加载，如果已经查看）
 
@@ -156,17 +128,135 @@ Pipeline - 导航到仪表板（如果已经查看，则不执行任何操作）
 
 使用标准导航栏的视图将在其下方添加另一个与该视图相关的选项。一些视图用一个特别适合该视图的通用导航栏来代替。
 
-
-
 切换到“Classic”UI
 
 BlueOcean可能不支持某些用户需要的遗留或管理功能。对于那些希望退出BlueOcean的用户来说，“退出”图标位于BlueOcean大部分页面的顶部。点击退出图标将导航到BlueOcean中当前页面的“经典”页面中最相关的页面。
 
-
-
 BlueOcean入门
 
-
-
 BlueOcean中的一些链接，如管理，也将导航到经典的网页界面，当没有BlueOcean的时候。在这些情况下，BlueOcean将根据需要自动将用户带入经典的网页界面。
+
+BlueOcean可以轻松地在Jenkins创建Pipeline。Pipeline可以从现有的“Jenkinsfile”或由Blue Ocean Pipeline Editor创建的新Jenkinsfile文件创建 。Pipeline创建工作流程通过清晰，易于理解的步骤指导用户完成此过程。
+
+
+
+启动Pipeline创建
+
+在BlueOcean界面的顶部，是一个“ New Pipeline ”按钮，启动Pipeline创建工作流程。
+
+
+
+BlueOcean 创建Pipeline
+
+
+
+在新的Jenkins实例中，没有作业或Pipeline，仪表板为空，Blue Ocean还将显示“Creat a new Pipeline”的消息框。
+
+
+
+BlueOcean 创建Pipeline
+
+
+
+为Git存储库创建Pipeline
+
+要从Git存储库创建Pipeline，首先选择“Git”作为源代码控制系统。
+
+
+
+BlueOcean 创建Pipeline
+
+
+
+然后输入Git Repository的URL，并可选择选择要使用的凭据。如果下拉列表中没有显示所需的凭据，则可以使用“添加”按钮添加。
+
+
+
+完成后，点击“创建Pipeline”。BlueOcean将查看所选存储库的所有分支，并将为包含a的每个分支启动Pipeline运行Jenkinsfile。
+
+
+
+BlueOcean 创建Pipeline
+
+
+
+为GitHub存储库创建Pipeline
+
+要从GitHub创建Pipeline，首先选择“GitHub”作为源代码控制系统。
+
+
+
+BlueOcean 创建Pipeline
+
+
+
+提供一个GitHub访问令牌
+
+如果这是当前登录用户首次运行Pipeline创建，Blue Ocean将要求 GitHub访问令牌 允许Blue Ocean访问您的组织和存储库。
+
+
+
+BlueOcean 创建Pipeline
+
+
+
+如果您尚未创建访问令牌，请单击提供的链接，Blue Ocean将导航到 GitHub上的右侧页面，自动选择所需的相应权限。
+
+
+
+BlueOcean 创建Pipeline
+
+
+
+选择一个GitHub帐户或组织
+
+Github上的所有存储库都由所有者，帐户或组织分组。创建Pipeline时，Blue Ocean会反映该结构，要求用户选择拥有存储库的帐户或组织，从中添加Pipeline。
+
+
+
+BlueOcean 创建Pipeline
+
+
+
+
+
+
+
+从这里，BlueOcean 提供两种风格的Pipeline创作，即 "single Pipeline" or "discover all Pipelines”。
+
+
+
+来自单个存储库的新Pipeline 
+
+选择“新Pipeline ”允许用户为单个存储库选择并创建Pipeline 。
+
+
+
+BlueOcean 创建Pipeline
+
+
+
+选择存储库后，Blue Ocean将扫描该存储库中的所有分支，并为根文件夹中包含“Jenkinsfile”的每个分支创建一个Pipeline。然后BlueOcean将在此过程中运行为每个分支创建的Pipeline。
+
+
+
+如果所选存储库中没有分支机构有“Jenkins文件”，Blue Ocean将提供该存储库的“创建新Pipeline”，使用户到 BlueOcean Pipeline编辑器创建Jenkinsfile一个新的Pipeline并添加新的Pipeline。
+
+
+
+自动发现Pipeline
+
+选择“自动发现Pipeline”扫描属于所选所有者的所有存储库，并将为根文件夹中包含“Jenkinsfile”的每个分支创建一个Pipeline。
+
+
+
+BlueOcean 创建Pipeline
+
+
+
+
+
+
+
+当这些存储库中已有Jenkinsfile条目时，此选项对于在组织中的所有存储库添加Pipeline是有用的。不包含Jenkinsfile条目的存储库将被忽略。要Jenkinsfile在没有单个存储库中创建新的存储库，请改用“ "New Pipeline”选项。
 
