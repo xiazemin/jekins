@@ -64,3 +64,109 @@ BlueOcean作为Jenkins插件本身构建。然而，有一个关键的区别。�
 
 [Jenkins设计语言](https://github.com/jenkinsci/jenkins-design-language)
 
+安装
+
+BlueOcean可以安装在现有的Jenkins环境中，也可以使用Docker进行运行 。
+
+
+
+要开始在现有的Jenkins环境中使用Blue Ocean插件，它必须运行Jenkins 2.7.x或更高版本：
+
+
+
+登录到您的Jenkins服务器
+
+单击边栏中的管理Jenkins然后管理插件
+
+选择可用的选项卡，并使用搜索栏查找BlueOcean
+
+单击“安装”列中的复选框
+
+单击安装而不重新启动或立即下载并重新启动后安装
+
+BlueOcean入门
+
+
+
+有关如何安装和Pipeline插件的深入描述，请参阅“ Pipeline插件”部分。
+
+
+
+大多数Blue Ocean在安装后不需要额外的配置。现有管道和作业将继续照常运行。但是，Blue Ocean将首次创建或添加Pipeline，将要求访问您的存储库（Git或GitHub）的权限，以便根据这些存储库创建Pipeline。
+
+
+
+与Docker
+
+Jenkins项目每次发布Blue Ocean的新版本时，都会发布一个内置BlueOcean的Docker容器。该jenkinsci/blueocean 图像基于当前的Jenkins长期支持 （LTS）版本，并且已经准备就绪。
+
+
+
+预先安装一个新的Jenkins：BlueOcean
+
+
+
+确保Docker已安装。
+
+跑 docker run -p 8888:8080 jenkinsci/blueocean:latest
+
+浏览到本地主机：8888 /蓝色
+
+可以使用与Jenkins项目发布的其他图像相同的配置选项来配置Blue Ocean容器 。
+
+
+
+开始BlueOcean
+
+一旦Jenkins环境安装了Blue Ocean，用户可以通过点击Jenkins网络用户界面的导航栏中的Open Blue Ocean开始使用Blue Ocean 。或者，用户可以直接浏览BlueOcean/blue，例如Jenkins环境的 URL http://JENKINS\_URL/blue。
+
+
+
+BlueOcean入门
+
+
+
+如果Pipeline已经存在于当前的Jenkins实例上，则会显示 Blue Ocean Dashboard。
+
+
+
+如果这是一个新的Jenkins实例，BlueOcean将展示一个盒子，以“ Create a new pipeline”。
+
+
+
+BlueOcean入门
+
+
+
+导航栏
+
+BlueOcean在大多数BlueOcean的顶部使用一个通用的导航栏。它包括五个按钮：
+
+
+
+Jenkins - 导航到仪表板（重新加载，如果已经查看）
+
+Pipeline - 导航到仪表板（如果已经查看，则不执行任何操作）
+
+管理 - 管理此Jenkins实例（使用Classic UI）
+
+切换到“经典”UI - 切换到“经典” Jenkins UI
+
+注销 - 注销当前用户，返回到Jenkins登录页面
+
+使用标准导航栏的视图将在其下方添加另一个与该视图相关的选项。一些视图用一个特别适合该视图的通用导航栏来代替。
+
+
+
+切换到“Classic”UI
+
+BlueOcean可能不支持某些用户需要的遗留或管理功能。对于那些希望退出BlueOcean的用户来说，“退出”图标位于BlueOcean大部分页面的顶部。点击退出图标将导航到BlueOcean中当前页面的“经典”页面中最相关的页面。
+
+
+
+BlueOcean入门
+
+
+
+BlueOcean中的一些链接，如管理，也将导航到经典的网页界面，当没有BlueOcean的时候。在这些情况下，BlueOcean将根据需要自动将用户带入经典的网页界面。
+
